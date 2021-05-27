@@ -29,4 +29,9 @@ fetch(
     console.log(data);
   });
 
-pokemon();
+$(".searchBtn").on("click", function (event) {
+  event.preventDefault();
+
+  pokemon();
+  $(input).val("");
+});
