@@ -1,3 +1,4 @@
+
 header {
     background-image: url("https://tse1.mm.bing.net/th?id=OIP.BcnFxRI9j19j5XVX3k6AfQHaDd&pid=15.1");
     background-color: #CCCCCC;
@@ -30,3 +31,9 @@ header {
     justify-content: center;
     justify-content: space-around;
 }
+#pokeSelect {
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+}
+
