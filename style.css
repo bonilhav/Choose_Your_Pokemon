@@ -1,3 +1,14 @@
 .is-rounded {
     
 }
+
+.example {
+    background: url('https://emoji.gg/assets/emoji/pokeball.png') no-repeat;
+    cursor: pointer;
+}
+
+#pokeSelect {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+}
