@@ -179,7 +179,8 @@ function pokemon() {
       console.log(data);
 
       let choosenPoke = data.name;
-      let giphyApi = `https://api.giphy.com/v1/gifs/search?api_key=MFLGZadukzit9Mk8qCC8J3cbVDWy11db&q=${choosenPoke}=en`;
+      let APIKEY = "MFLGZadukzit9Mk8qCC8J3cbVDWy11db"
+      let giphyApi = `https://api.giphy.com/v1/gifs/search?api_key=${APIKEY}&limit=6&PG-13&q=${choosenPoke}-pokemon=en`;
 
       fetch(giphyApi)
         .then(function (response) {
