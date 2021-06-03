@@ -179,14 +179,15 @@ function pokemon() {
       console.log(data);
 
       let choosenPoke = data.name;
-      let giphyApi = `https://api.giphy.com/v1/gifs/search?api_key=MFLGZadukzit9Mk8qCC8J3cbVDWy11db&q=${choosenPoke}+squirtle=en`;
+      let giphyApi = `https://api.giphy.com/v1/gifs/search?api_key=MFLGZadukzit9Mk8qCC8J3cbVDWy11db&q=${choosenPoke}=en`;
+
       fetch(giphyApi)
         .then(function (response) {
           return response.json();
         })
-        .then(function ({ dataGiph }) {
-          console.log(dataGiph);
-          dataGiph.forEach((giphy) => {
+        .then(function (data) {
+          console.log(data);
+          data.forEach((giphy) => {
             console.log(giphy);
             const $img = document.createElement("img");
             $img.setAttribute("src", giphy.images.original.url);
