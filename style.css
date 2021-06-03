@@ -18,6 +18,10 @@ header {
 
 /* changed to ID to not crowed the class, pokeball is not functioning because  */
 
+#inputForm {
+  margin-top: 30px;
+}
+
 #pokeball {
     background: white;
     border: none;
