@@ -168,7 +168,8 @@ $(function () {
 });
 
 function pokemon() {
-  let pokemonUrl = "https://pokeapi.co/api/v2/pokemon?limit=151";
+  let lowerCasePoke = searchedPoke.toLowerCase();
+  let pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${lowerCasePoke}`;
 
   fetch(pokemonUrl)
     .then(function (response) {
@@ -176,19 +177,24 @@ function pokemon() {
     })
     .then(function (data) {
       console.log(data);
+
+      let choosenPoke = data.name;
+      let giphyApi = `https://api.giphy.com/v1/gifs/search?api_key=MFLGZadukzit9Mk8qCC8J3cbVDWy11db&q=${choosenPoke}+squirtle=en`;
+      fetch(giphyApi)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function ({ dataGiph }) {
+          console.log(dataGiph);
+          dataGiph.forEach((giphy) => {
+            console.log(giphy);
+            const $img = document.createElement("img");
+            $img.setAttribute("src", giphy.images.original.url);
+            $pokeDiv.append($img);
+          });
+        });
     });
 }
-
-const $miamiF = document.getElementById("miami");
-fetch(
-  "https://api.giphy.com/v1/gifs/search?api_key=MFLGZadukzit9Mk8qCC8J3cbVDWy11db&q=dogs=pt"
-)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function ({ data }) {
-    console.log(data);
-  });
 
 $(".searchBtn").on("click", function (event) {
   event.preventDefault();
