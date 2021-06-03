@@ -35,3 +35,37 @@ header {
   justify-content: center;
   justify-content: space-around;
 }
+
+.result_box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+  width: 100%;
+  height: 100%;
+  background: yellow;
+  border-radius: 8px;
+  /* opacity: 0; */
+  z-index: 99;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9);
+  border-radius: 8px;
+  padding: 25px 30px;
+  border-radius: 8px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#selectedPokemon {
+  font-weight: 500;
+  font-size: 100px;
+}
+
+.left-align {
+  display: flex;
+  justify-content: flex-start;
+}
