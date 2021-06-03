@@ -23,15 +23,15 @@ header {
 }
 
 #pokeball {
-    background: white;
-    border: none;
-    padding: 20px;
+  background: white;
+  border: none;
+  padding: 20px;
 }
 
 .pokedex {
-    background: white;
-    border: none;
-    padding: 10px;
+  background: white;
+  border: none;
+  padding: 10px;
 }
 
 #pokeSelect {
