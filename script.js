@@ -167,6 +167,27 @@ $(function () {
   });
 });
 
+$(document).ready(function () {
+  // console.log("ready!");
+
+  for (let i = 1; i < 7; i++) {
+    let randomNum = Math.ceil(Math.random() * 151);
+    let randompokemonUrl = `https://pokeapi.co/api/v2/pokemon/${randomNum}`;
+
+    fetch(randompokemonUrl)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data);
+        let pokeSprite = data.sprites.front_default;
+        let pokeImg = $(".image");
+
+        pokeImg.html(`<img src="${pokeSprite}" alt="Pokemon">`);
+      });
+  }
+});
+
 function pokemon() {
   let lowerCasePoke = searchedPoke.toLowerCase();
   let pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${lowerCasePoke}`;
@@ -179,7 +200,7 @@ function pokemon() {
       console.log(data);
 
       let choosenPoke = data.name;
-      let APIKEY = "MFLGZadukzit9Mk8qCC8J3cbVDWy11db"
+      let APIKEY = "MFLGZadukzit9Mk8qCC8J3cbVDWy11db";
       let giphyApi = `https://api.giphy.com/v1/gifs/search?api_key=${APIKEY}&limit=6&PG-13&q=${choosenPoke}-pokemon=en`;
 
       fetch(giphyApi)
@@ -198,9 +219,15 @@ function pokemon() {
     });
 }
 
+function randomPoke() {}
+
 $(".searchBtn").on("click", function (event) {
   event.preventDefault();
 
   pokemon();
   $(input).val("");
+});
+
+$(".pokedex").on("click", function (event) {
+  event.preventDefault();
 });
