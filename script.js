@@ -181,9 +181,12 @@ $(document).ready(function () {
       .then(function (data) {
         console.log(data);
         let pokeSprite = data.sprites.front_default;
-        let pokeImg = $(".image");
-
+        let pokeImg = $(`.image-${i}`);
         pokeImg.html(`<img src="${pokeSprite}" alt="Pokemon">`);
+        let pokeName = data.name;
+        let capPokeName = pokeName.charAt(0).toUpperCase() + pokeName.slice(1);
+        let displayName = $(`.title-${i}`);
+        displayName.html(`${capPokeName}`);
       });
   }
 });
