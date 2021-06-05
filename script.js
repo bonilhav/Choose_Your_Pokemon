@@ -1,10 +1,4 @@
 let searchedPoke = "";
-let giph1 = $("#giphy1");
-let giph2 = $("#giphy2");
-let giph3 = $("#giphy3");
-let giph4 = $("#giphy4");
-let giph5 = $("#giphy5");
-let giph6 = $("#giphy6");
 const input = document.querySelector("input");
 input.addEventListener("change", updateValue);
 function updateValue(e) {
@@ -208,6 +202,21 @@ function pokemon() {
     .then(function (data) {
       console.log(data);
 
+      let cardImg = $(".cardImg")
+      let stats = $(".stats")
+
+      document.getElementById("selectedPokemon").innerHTML = `${searchedPoke}`;
+
+      cardImg.html(`<img src="${data.sprites.front_default}" alt="Pokemon">`)
+      stats.html(`
+      <p id="stat1">HP: ${data.stats[0].base_stat}</p>
+      <p id="stat1">Attack: ${data.stats[1].base_stat}</p>
+      <p id="stat1">Defense: ${data.stats[2].base_stat}</p>
+      <p id="stat1">Special-attack: ${data.stats[3].base_stat}</p>
+      <p id="stat1">Special-defense: ${data.stats[4].base_stat}</p>
+      <p id="stat1">Speed: ${data.stats[5].base_stat}</p>
+      `)
+
       let choosenPoke = data.name;
       let APIKEY = "MFLGZadukzit9Mk8qCC8J3cbVDWy11db";
       let giphyApi = `https://api.giphy.com/v1/gifs/search?api_key=${APIKEY}&limit=6&PG-13&q=${choosenPoke}-pokemon=en`;
@@ -222,14 +231,7 @@ function pokemon() {
             console.log(giphy);
             const $img = document.createElement("img");
             $img.setAttribute("src", giphy.images.original.url);
-            $giph1.append($img);
-            $giph2.append($img);
-            $giph3.append($img);
-            $giph4.append($img);
-            $giph5.append($img);
-            $giph6.append($img);
 
-            $("#selectedPokemon").append(choosenPoke)
           });
         });
     });
