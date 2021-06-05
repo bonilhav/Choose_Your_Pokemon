@@ -1,4 +1,10 @@
 let searchedPoke = "";
+let giph1 = $("#giphy1");
+let giph2 = $("#giphy2");
+let giph3 = $("#giphy3");
+let giph4 = $("#giphy4");
+let giph5 = $("#giphy5");
+let giph6 = $("#giphy6");
 const input = document.querySelector("input");
 input.addEventListener("change", updateValue);
 function updateValue(e) {
@@ -216,11 +222,20 @@ function pokemon() {
             console.log(giphy);
             const $img = document.createElement("img");
             $img.setAttribute("src", giphy.images.original.url);
-            $pokeDiv.append($img);
+            $giph1.append($img);
+            $giph2.append($img);
+            $giph3.append($img);
+            $giph4.append($img);
+            $giph5.append($img);
+            $giph6.append($img);
+
+            $("#selectedPokemon").append(choosenPoke)
           });
         });
     });
 }
+
+const resultBox = document.querySelector(".result_box")
 
 function randomPoke() {}
 
@@ -229,8 +244,14 @@ $(".searchBtn").on("click", function (event) {
 
   pokemon();
   $(input).val("");
+  resultBox.classList.add("activeResult");
 });
 
 $(".pokedex").on("click", function (event) {
   event.preventDefault();
 });
+
+$("returnBtn").on("click", function (event) {
+  event.preventDefault();
+  resultBox.classList.remove("activeResult");
+})
