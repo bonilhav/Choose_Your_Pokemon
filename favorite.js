@@ -30,7 +30,7 @@ function pokemonHomePage() {
     location.replace("./index.html")
 }
 
-$(".searchBtn").on("click", function (event) {
+$(".homeBtn").on("click", function (event) {
     event.preventDefault();
   
     pokemonHomePage();
