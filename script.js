@@ -236,11 +236,14 @@ function pokemon() {
         })
         .then(function ({ data }) {
           console.log(data);
-          data.forEach((giphy) => {
-            console.log(giphy);
-            const $img = document.createElement("img");
-            $img.setAttribute("src", giphy.images.original.url);
-          });
+          for (let i = 0; i < 6; i++) {
+            let gif = data[i].images.original.url;
+            let gifImg = $(`#giphy-${i}`);
+            console.log(gif);
+            console.log(gifImg);
+
+            gifImg.html(`<img src="${gif}" alt="Giphy">`);
+          };
         });
     });
 }
