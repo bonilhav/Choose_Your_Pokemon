@@ -249,6 +249,7 @@ $(".searchBtn").on("click", function (event) {
 
 $(".pokedex").on("click", function (event) {
   event.preventDefault();
+  location.replace("./favoritePoke.html")
 });
 
 $("#returnBtn").on("click", function (event) {
