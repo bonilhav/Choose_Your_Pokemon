@@ -185,6 +185,15 @@ $(document).ready(function () {
         pokeImg.html(`<img src="${pokeSprite}" alt="Pokemon">`);
         let pokeName = data.name;
         let capPokeName = pokeName.charAt(0).toUpperCase() + pokeName.slice(1);
+        if (capPokeName.slice(capPokeName.length - 2) === "-f") {
+          capPokeName = capPokeName.replace("-f", "(" + "&#9792;" + ")");
+        }
+        if (capPokeName.slice(capPokeName.length - 2) === "-m") {
+          capPokeName = capPokeName.replace("-m", "(" + "&#9794;" + ")");
+        }
+        if (capPokeName.match(/Mr-mime/gi)) {
+          capPokeName = capPokeName.replace(/Mr-Mime/gi, "Mr. Mime");
+        }
         let displayName = $(`.title-${i}`);
         displayName.html(`${capPokeName}`);
       });
@@ -202,12 +211,12 @@ function pokemon() {
     .then(function (data) {
       console.log(data);
 
-      let cardImg = $(".cardImg")
-      let stats = $(".stats")
+      let cardImg = $(".cardImg");
+      let stats = $(".stats");
 
       document.getElementById("selectedPokemon").innerHTML = `${searchedPoke}`;
 
-      cardImg.html(`<img src="${data.sprites.front_default}" alt="Pokemon">`)
+      cardImg.html(`<img src="${data.sprites.front_default}" alt="Pokemon">`);
       stats.html(`
       <p id="stat1">HP: ${data.stats[0].base_stat}</p>
       <p id="stat1">Attack: ${data.stats[1].base_stat}</p>
@@ -215,7 +224,7 @@ function pokemon() {
       <p id="stat1">Special-attack: ${data.stats[3].base_stat}</p>
       <p id="stat1">Special-defense: ${data.stats[4].base_stat}</p>
       <p id="stat1">Speed: ${data.stats[5].base_stat}</p>
-      `)
+      `);
 
       let choosenPoke = data.name;
       let APIKEY = "MFLGZadukzit9Mk8qCC8J3cbVDWy11db";
@@ -231,35 +240,34 @@ function pokemon() {
             console.log(giphy);
             const $img = document.createElement("img");
             $img.setAttribute("src", giphy.images.original.url);
-
           });
         });
     });
 }
 
-const resultBox = document.querySelector(".result_box")
+const resultBox = document.querySelector(".result_box");
 
 function randomPoke() {}
 
-$(".searchBtn").on("click", function (event) {
+$(".searchBtn").on("click", async function (event) {
   event.preventDefault();
 
-  pokemon();
   $(input).val("");
+  await pokemon();
   resultBox.classList.add("activeResult");
 });
 
 $(".pokedex").on("click", function (event) {
   event.preventDefault();
-  location.replace("./favoritePoke.html")
+  location.replace("./favoritePoke.html");
 });
 
 $("#returnBtn").on("click", function (event) {
   event.preventDefault();
   resultBox.classList.remove("activeResult");
-})
+});
 
-$('.card').on('click', function (event) {
+$(".card").on("click", function (event) {
   event.preventDefault();
   resultBox.classList.add("activeResult");
-})
+});
