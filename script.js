@@ -255,3 +255,7 @@ $("returnBtn").on("click", function (event) {
   event.preventDefault();
   resultBox.classList.remove("activeResult");
 })
+
+// $('#pokeCard').on('click', function () {
+//   $('#result_box').removeClass('hidden')
+// })
