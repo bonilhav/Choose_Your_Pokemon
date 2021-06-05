@@ -249,14 +249,14 @@ $(".searchBtn").on("click", function (event) {
 
 $(".pokedex").on("click", function (event) {
   event.preventDefault();
-  location.replace("./favoritePoke.html")
 });
 
-$("returnBtn").on("click", function (event) {
+$("#returnBtn").on("click", function (event) {
   event.preventDefault();
   resultBox.classList.remove("activeResult");
 })
 
-// $('#pokeCard').on('click', function () {
-//   $('#result_box').removeClass('hidden')
-// })
+$('.card').on('click', function (event) {
+  event.preventDefault();
+  resultBox.classList.add("activeResult");
+})
