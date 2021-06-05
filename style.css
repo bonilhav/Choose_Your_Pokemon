@@ -44,12 +44,9 @@ header {
   justify-content: space-around;
 }
 
-/* .hidden {
-  display: none !important;
-} */
-
-#result_box {
+.result_box {
   position: absolute;
+  visibility: hidden;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -68,6 +65,7 @@ header {
 
 .result_box.activeResult{
   z-index: 5;
+  visibility: visible;
   opacity: 1;
   pointer-events: auto;
   transform: translate(-50%, -50%) scale(1);
