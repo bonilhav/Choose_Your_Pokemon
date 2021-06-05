@@ -168,11 +168,19 @@ $(function () {
 });
 
 $(document).ready(function () {
-  // console.log("ready!");
+  let numsArr = [];
+  for (let i = 1; i < 5; i++) {
+    while (numsArr.length <= 6) {
+      let randomNum = Math.ceil(Math.random() * 151);
 
-  for (let i = 1; i < 7; i++) {
-    let randomNum = Math.ceil(Math.random() * 151);
-    let randompokemonUrl = `https://pokeapi.co/api/v2/pokemon/${randomNum}`;
+      if (!numsArr.includes(randomNum)) {
+        numsArr.push(randomNum);
+      }
+    }
+  }
+  for (let i = 0; i <= numsArr.length; i++) {
+    randomNumPoke = numsArr[i];
+    let randompokemonUrl = `https://pokeapi.co/api/v2/pokemon/${randomNumPoke}`;
 
     fetch(randompokemonUrl)
       .then(function (response) {
@@ -198,6 +206,7 @@ $(document).ready(function () {
         displayName.html(`${capPokeName}`);
       });
   }
+  console.log(numsArr);
 });
 
 function pokemon() {
