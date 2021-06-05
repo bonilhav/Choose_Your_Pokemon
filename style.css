@@ -78,7 +78,19 @@ header {
   color: rgb(112, 112, 112);
 }
 
-#selectedPokemon button {
+#buttons {
+  text-align: center;
+}
+
+#favoriteBtn {
+  font-size: 40px;
+  border: none;
+  background-color: rgb(78, 195, 241);
+  display: inline-block;
+  color:rgb(243, 36, 36);
+}
+
+#returnBtn {
   font-size: 40px;
   border: none;
   background-color: rgb(78, 195, 241);
@@ -93,10 +105,15 @@ header {
   border: solid 20px yellow;
 }
 
+.cardImg{
+  background-color: rgb(255, 255, 169);
+}
+
 .stats{
+  padding: 10px;
   font-size: 20px;
   font-weight: 600;
-  background-color: yellow;
+  background-color: rgb(255, 255, 169);
 
 }
 
@@ -117,6 +134,3 @@ header {
   width: 300px;
 }
 
-#favoriteBtn {
-  color:rgb(243, 36, 36);
-}
