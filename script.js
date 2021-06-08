@@ -4,162 +4,9 @@ let favoriteList = [];
 const input = document.querySelector("input");
 input.addEventListener("change", updateValue);
 function updateValue(e) {
-  searchedPoke = e.target.value.toLowerCase();
+  searchedPoke = e.target.value;
 }
-let pokemonMain = [
-  "Bulbasaur",
-  "Ivysaur",
-  "Venusaur",
-  "Charmander",
-  "Charmeleon",
-  "Charizard",
-  "Squirtle",
-  "Wartortle",
-  "Blastoise",
-  "Caterpie",
-  "Metapod",
-  "Butterfree",
-  "Weedle",
-  "Kakuna",
-  "Beedrill",
-  "Pidgey",
-  "Pidgeotto",
-  "Pidgeot",
-  "Rattata",
-  "Raticate",
-  "Spearow",
-  "Fearow",
-  "Ekans",
-  "Arbok",
-  "Pikachu",
-  "Raichu",
-  "Sandshrew",
-  "Sandslash",
-  "Nidoran",
-  "Nidorina",
-  "Nidoqueen",
-  "Nidoran",
-  "Nidorino",
-  "Nidoking",
-  "Clefairy",
-  "Clefable",
-  "Vulpix",
-  "Ninetales",
-  "Jigglypuff",
-  "Wigglytuff",
-  "Zubat",
-  "Golbat",
-  "Oddish",
-  "Gloom",
-  "Vileplume",
-  "Paras",
-  "Parasect",
-  "Venonat",
-  "Venomoth",
-  "Diglett",
-  "Dugtrio",
-  "Meowth",
-  "Persian",
-  "Psyduck",
-  "Golduck",
-  "Mankey",
-  "Primeape",
-  "Growlithe",
-  "Arcanine",
-  "Poliwag",
-  "Poliwhirl",
-  "Poliwrath",
-  "Abra",
-  "Kadabra",
-  "Alakazam",
-  "Machop",
-  "Machoke",
-  "Machamp",
-  "Bellsprout",
-  "Weepinbell",
-  "Victreebel",
-  "Tentacool",
-  "Tentacruel",
-  "Geodude",
-  "Graveler",
-  "Golem",
-  "Ponyta",
-  "Rapidash",
-  "Slowpoke",
-  "Slowbro",
-  "Magnemite",
-  "Magneton",
-  "Farfetch'd",
-  "Doduo",
-  "Dodrio",
-  "Seel",
-  "Dewgong",
-  "Grimer",
-  "Muk",
-  "Shellder",
-  "Cloyster",
-  "Gastly",
-  "Haunter",
-  "Gengar",
-  "Onix",
-  "Drowzee",
-  "Hypno",
-  "Krabby",
-  "Kingler",
-  "Voltorb",
-  "Electrode",
-  "Exeggcute",
-  "Exeggutor",
-  "Cubone",
-  "Marowak",
-  "Hitmonlee",
-  "Hitmonchan",
-  "Lickitung",
-  "Koffing",
-  "Weezing",
-  "Rhyhorn",
-  "Rhydon",
-  "Chansey",
-  "Tangela",
-  "Kangaskhan",
-  "Horsea",
-  "Seadra",
-  "Goldeen",
-  "Seaking",
-  "Staryu",
-  "Starmie",
-  "Mr. Mime",
-  "Scyther",
-  "Jynx",
-  "Electabuzz",
-  "Magmar",
-  "Pinsir",
-  "Tauros",
-  "Magikarp",
-  "Gyarados",
-  "Lapras",
-  "Ditto",
-  "Eevee",
-  "Vaporeon",
-  "Jolteon",
-  "Flareon",
-  "Porygon",
-  "Omanyte",
-  "Omastar",
-  "Kabuto",
-  "Kabutops",
-  "Aerodactyl",
-  "Snorlax",
-  "Articuno",
-  "Zapdos",
-  "Moltres",
-  "Dratini",
-  "Dragonair",
-  "Dragonite",
-  "Mewtwo",
-  "Mew",
-];
-pokemonMain = pokemonMain.map(pokemon=> pokemon.toLowerCase())
+
 $(function () {
   let pokemon = [
     "Bulbasaur",
@@ -333,7 +180,7 @@ $(document).ready(function () {
       }
     }
   }
-  for (let i = 0; i < numsArr.length; i++) {
+  for (let i = 0; i <= numsArr.length; i++) {
     randomNumPoke = numsArr[i];
     let randompokemonUrl = `https://pokeapi.co/api/v2/pokemon/${randomNumPoke}`;
 
@@ -364,19 +211,6 @@ $(document).ready(function () {
 });
 
 function pokemon(lowerCasePoke) {
-  if (pokemonMain.includes(lowerCasePoke) === false) {
-    resultBox.classList.remove("activeResult");
-    let errorNotice = $("#notify");
-    errorNotice.html(`<div class="notification is-warning is-4 has-text-centered">
-    <button class="delete"></button><strong>
-    Please select one of the original 151 Pokemon.</strong>
-    </div>`);
-    $('.delete').on('click', function() {
-      let errorNotice = $("#notify");
-      errorNotice.html('');
-    }) 
-    return;
-  }
   lowerCasePoke = lowerCasePoke.toLowerCase();
   let pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${lowerCasePoke}`;
 
@@ -438,8 +272,13 @@ function pokemon(lowerCasePoke) {
 
       function favoritePokemon() {
         console.log(pokeStats);
+        if (favoriteList.length > 5) {
+          favoriteList.shift()
+          
+        }
+        favoriteList.push(pokeStats)
+      
 
-        favoriteList.push(pokeStats);
         window.localStorage.setItem(
           "favoritePoke",
           JSON.stringify(favoriteList)
@@ -447,6 +286,9 @@ function pokemon(lowerCasePoke) {
       }
     });
 }
+
+
+
 
 const resultBox = document.querySelector(".result_box");
 
@@ -457,9 +299,7 @@ $(".searchBtn").on("click", async function (event) {
 
   $(input).val("");
   await pokemon(searchedPoke);
-  if (pokemonMain.includes(searchedPoke) === true) {
-    resultBox.classList.add("activeResult");
-  }
+  resultBox.classList.add("activeResult");
 });
 
 $(".pokedex").on("click", function (event) {
@@ -474,7 +314,8 @@ $("#returnBtn").on("click", function (event) {
 
 $(".card").on("click", async function (event) {
   event.preventDefault();
-  let cardPoke = $(this).context.innerText.toLowerCase();
+  let cardPoke = $(this).context.innerText;
+
   await pokemon(cardPoke);
   resultBox.classList.add("activeResult");
 });
