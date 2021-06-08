@@ -438,8 +438,12 @@ function pokemon(lowerCasePoke) {
 
       function favoritePokemon() {
         console.log(pokeStats);
-
-        favoriteList.push(pokeStats);
+        if (favoriteList.length > 5) {
+          favoriteList.shift()
+          
+        }
+        favoriteList.push(pokeStats)
+        
         window.localStorage.setItem(
           "favoritePoke",
           JSON.stringify(favoriteList)
