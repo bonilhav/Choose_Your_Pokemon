@@ -272,8 +272,12 @@ function pokemon(lowerCasePoke) {
 
       function favoritePokemon() {
         console.log(pokeStats);
+        if (favoriteList.length > 5) {
+          favoriteList.shift()
+          
+        }
+        favoriteList.push(pokeStats)
 
-        favoriteList.push(pokeStats);
         window.localStorage.setItem(
           "favoritePoke",
           JSON.stringify(favoriteList)
@@ -281,6 +285,9 @@ function pokemon(lowerCasePoke) {
       }
     });
 }
+
+
+
 
 const resultBox = document.querySelector(".result_box");
 
