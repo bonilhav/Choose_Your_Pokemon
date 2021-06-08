@@ -20,7 +20,7 @@ I GIF YOU!
 
 List of Contributors:
 
-1. Vanessa Bonilla - SCRUM Master/HTML/Javascript Coding
+1. Vanessa Bonilla - SCRUM Master/HTML/CSS/Javascript Coding
 
 2. Landon Waddell - HTML/Javascript Coding
 

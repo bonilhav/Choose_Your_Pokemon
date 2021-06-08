@@ -176,6 +176,7 @@ body {
   .result_box {flex-direction: column;}
   #selectedPokemon { font-size: 80px;}
   #pokeCard { margin: 4px 0 0 0}
+  .caughtCards {flex-wrap: wrap;}
   .giphys {width: 100%;}
   .giph img {margin: 2px; padding: 0; height: 75px;}
 }
@@ -184,6 +185,7 @@ body {
   .result_box {flex-direction: column;}
   #selectedPokemon { font-size: 40px;}
   #pokeCard { margin: 4px 0 0 0}
+  .caughtCards {flex-wrap: wrap;}
   .giphys {width: 100%;}
   .giph img {margin: 2px; padding: 0; height: 75px;}
 }
