@@ -7,17 +7,25 @@ header {
   background-color: #cccccc;
   display: flex;
   justify-content: center;
-  margin: 30px;
+  padding: 15px;
 }
 
 body {
-    background-color: rgb(159, 188, 241);
-    height: 100mh;
+  background-color: rgb(159, 188, 241);
+  height: 100mh;
+}
+
+.hero {
+  text-align: center;
+}
+
+#tile {
+  justify-content: center;
 }
 
 .favHtml {
   background-color: rgb(159, 188, 241);
-    height: 100vh;
+  height: 100vh;
 }
 
 #searchMenu {
@@ -61,7 +69,7 @@ body {
   transition: all 0.3s ease;
   width: 100%;
   height: 100vh;
-  background: rgb(78, 195, 241);
+  background: rgb(159, 188, 241);
   border-radius: 8px;
   opacity: 0;
   z-index: 99;
@@ -98,7 +106,7 @@ body {
 #favoriteBtn {
   font-size: 40px;
   border: none;
-  background-color: rgb(78, 195, 241);
+  background-color: rgb(159, 188, 241);
   display: inline-block;
   color:rgb(243, 36, 36);
 }
@@ -106,7 +114,7 @@ body {
 #returnBtn {
   font-size: 40px;
   border: none;
-  background-color: rgb(78, 195, 241);
+  background-color: rgb(159, 188, 241);
   display: inline-block;
   color: darkblue;
 }
