@@ -10,6 +10,10 @@ header {
   margin: 30px;
 }
 
+body {
+  height: 100%;
+}
+
 #searchMenu {
   display: flex;
   justify-content: center;
@@ -19,8 +23,6 @@ header {
 #favorites {
   margin: 30px 0;
 }
-
-/* changed to ID to not crowed the class, pokeball is not functioning because  */
 
 #inputForm {
   margin-top: 30px;
@@ -52,7 +54,7 @@ header {
   transform: translate(-50%, -50%);
   transition: all 0.3s ease;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background: rgb(78, 195, 241);
   border-radius: 8px;
   opacity: 0;
@@ -69,6 +71,11 @@ header {
   opacity: 1;
   pointer-events: auto;
   transform: translate(-50%, -50%) scale(1);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
 }
 
 #selectedPokemon {
@@ -100,13 +107,15 @@ header {
 
 #pokeCard {
   display: inline-block;
+  
   width: 300px;
-  margin: 90px 0 0 150px;
+  margin: 10px;
   border: solid 20px yellow;
 }
 
 .cardImg{
   background-color: rgb(255, 255, 169);
+  border: none;
 }
 
 .stats{
@@ -114,18 +123,15 @@ header {
   font-size: 20px;
   font-weight: 600;
   background-color: rgb(255, 255, 169);
+}
 
+.giph {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .giphHolder {
-  margin: 75px; 
-  float: right;
-  width: 600px;
-}
-
-.giphys{
   display: flex;
-  justify-content: flex-end;
 }
 
 .giph img{
@@ -134,3 +140,47 @@ header {
   width: 300px;
 }
 
+.favHtml {
+  background-color: rgb(159, 188, 241);
+  height: 100vh;
+}
+
+#pokeball2{
+  background-color: rgb(159, 188, 241);
+  border: none;
+  padding: 20px;
+}
+
+#stuff {
+  font-size: 100px;
+  color: black;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(159, 188, 241);
+}
+
+.caughtCards{
+  display: flex;
+}
+
+#pokeCard2 {
+  display: flex;
+  margin: 20px;
+  border: solid 20px yellow;
+}
+
+@media screen and (max-width: 768px) {
+  .result_box {flex-direction: column;}
+  #selectedPokemon { font-size: 80px;}
+  #pokeCard { margin: 4px 0 0 0}
+  .giphys {width: 100%;}
+  .giph img {margin: 2px; padding: 0; height: 75px;}
+}
+
+@media screen and (max-width: 576px) {
+  .result_box {flex-direction: column;}
+  #selectedPokemon { font-size: 40px;}
+  #pokeCard { margin: 4px 0 0 0}
+  .giphys {width: 100%;}
+  .giph img {margin: 2px; padding: 0; height: 75px;}
+}
