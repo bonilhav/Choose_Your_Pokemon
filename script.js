@@ -332,7 +332,7 @@ $(document).ready(function () {
       }
     }
   }
-  for (let i = 0; i <= numsArr.length; i++) {
+  for (let i = 0; i < numsArr.length; i++) {
     randomNumPoke = numsArr[i];
     let randompokemonUrl = `https://pokeapi.co/api/v2/pokemon/${randomNumPoke}`;
 
@@ -365,22 +365,12 @@ $(document).ready(function () {
 function pokemon(lowerCasePoke) {
   // console.log(pokemonMain.includes(lowerCasePoke));
   if (pokemonMain.includes(lowerCasePoke) === false) {
+    resultBox.classList.remove("activeResult");
     let errorNotice = $("#notify");
-    errorNotice.html(`<div class="notification is-warning">
-    <button class="delete"></button>
-    Please select one of the original 151 Pokemon.
+    errorNotice.html(`<div class="notification is-warning is-4 has-text-centered">
+    <button class="delete"></button><strong>
+    Please select one of the original 151 Pokemon.</strong>
     </div>`);
-    document.addEventListener("DOMContentLoaded", () => {
-      (document.querySelectorAll(".notification .delete") || []).forEach(
-        ($delete) => {
-          const $notification = $delete.parentNode;
-
-          $delete.addEventListener("click", () => {
-            $notification.parentNode.removeChild($notification);
-          });
-        }
-      );
-    });
     return;
   }
   lowerCasePoke = lowerCasePoke.toLowerCase();
@@ -444,12 +434,8 @@ function pokemon(lowerCasePoke) {
 
       function favoritePokemon() {
         console.log(pokeStats);
-        if (favoriteList.length > 5) {
-          favoriteList.shift()
-          
-        }
-        favoriteList.push(pokeStats)
 
+        favoriteList.push(pokeStats);
         window.localStorage.setItem(
           "favoritePoke",
           JSON.stringify(favoriteList)
@@ -457,9 +443,6 @@ function pokemon(lowerCasePoke) {
       }
     });
 }
-
-
-
 
 const resultBox = document.querySelector(".result_box");
 
@@ -489,4 +472,16 @@ $(".card").on("click", async function (event) {
 
   await pokemon(cardPoke);
   resultBox.classList.add("activeResult");
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  (document.querySelectorAll(".notification .delete") || []).forEach(
+    ($delete) => {
+      const $notification = $delete.parentNode;
+
+      $delete.addEventListener("click", () => {
+        $notification.parentNode.removeChild($notification);
+      });
+    }
+  );
 });
