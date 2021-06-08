@@ -4,7 +4,7 @@ let favoriteList = [];
 const input = document.querySelector("input");
 input.addEventListener("change", updateValue);
 function updateValue(e) {
-  searchedPoke = e.target.value;
+  searchedPoke = e.target.value.toLowerCase();
 }
 let pokemonMain = [
   "Bulbasaur",
@@ -159,6 +159,7 @@ let pokemonMain = [
   "Mewtwo",
   "Mew",
 ];
+pokemonMain = pokemonMain.map(pokemon=> pokemon.toLowerCase())
 $(function () {
   let pokemon = [
     "Bulbasaur",
@@ -363,7 +364,6 @@ $(document).ready(function () {
 });
 
 function pokemon(lowerCasePoke) {
-  // console.log(pokemonMain.includes(lowerCasePoke));
   if (pokemonMain.includes(lowerCasePoke) === false) {
     resultBox.classList.remove("activeResult");
     let errorNotice = $("#notify");
@@ -371,6 +371,10 @@ function pokemon(lowerCasePoke) {
     <button class="delete"></button><strong>
     Please select one of the original 151 Pokemon.</strong>
     </div>`);
+    $('.delete').on('click', function() {
+      let errorNotice = $("#notify");
+      errorNotice.html('');
+    }) 
     return;
   }
   lowerCasePoke = lowerCasePoke.toLowerCase();
@@ -453,7 +457,9 @@ $(".searchBtn").on("click", async function (event) {
 
   $(input).val("");
   await pokemon(searchedPoke);
-  resultBox.classList.add("activeResult");
+  if (pokemonMain.includes(searchedPoke) === true) {
+    resultBox.classList.add("activeResult");
+  }
 });
 
 $(".pokedex").on("click", function (event) {
@@ -468,20 +474,7 @@ $("#returnBtn").on("click", function (event) {
 
 $(".card").on("click", async function (event) {
   event.preventDefault();
-  let cardPoke = $(this).context.innerText;
-
+  let cardPoke = $(this).context.innerText.toLowerCase();
   await pokemon(cardPoke);
   resultBox.classList.add("activeResult");
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  (document.querySelectorAll(".notification .delete") || []).forEach(
-    ($delete) => {
-      const $notification = $delete.parentNode;
-
-      $delete.addEventListener("click", () => {
-        $notification.parentNode.removeChild($notification);
-      });
-    }
-  );
 });
