@@ -211,8 +211,8 @@ $(document).ready(function () {
   }
 });
 
-function pokemon() {
-  let lowerCasePoke = searchedPoke.toLowerCase();
+function pokemon(lowerCasePoke) {
+  lowerCasePoke = lowerCasePoke.toLowerCase();
   let pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${lowerCasePoke}`;
 
   fetch(pokemonUrl)
@@ -282,7 +282,7 @@ $(".searchBtn").on("click", async function (event) {
   event.preventDefault();
 
   $(input).val("");
-  await pokemon();
+  await pokemon(searchedPoke);
   resultBox.classList.add("activeResult");
 });
 
@@ -296,8 +296,10 @@ $("#returnBtn").on("click", function (event) {
   resultBox.classList.remove("activeResult");
 });
 
-$(".card").on("click", function (event) {
+$(".card").on("click", async function (event) {
   event.preventDefault();
+  let cardPoke = $(this).context.innerText
 
+  await pokemon(cardPoke);
   resultBox.classList.add("activeResult");
 });
