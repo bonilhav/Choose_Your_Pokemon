@@ -169,8 +169,8 @@ $(function () {
 
 $(document).ready(function () {
   let numsArr = [];
-  for (let i = 1; i < 5; i++) {
-    while (numsArr.length <= 6) {
+  for (let i = 0; i < 6; i++) {
+    while (numsArr.length < 6) {
       let randomNum = Math.ceil(Math.random() * 151);
 
       if (!numsArr.includes(randomNum)) {
@@ -206,7 +206,6 @@ $(document).ready(function () {
         displayName.html(`${capPokeName}`);
       });
   }
-  console.log(numsArr);
 });
 
 function pokemon() {
@@ -237,7 +236,7 @@ function pokemon() {
 
       let choosenPoke = data.name;
       let APIKEY = "MFLGZadukzit9Mk8qCC8J3cbVDWy11db";
-      let giphyApi = `https://api.giphy.com/v1/gifs/search?api_key=${APIKEY}&limit=6&PG-13&q=${choosenPoke}-pokemon=en`;
+      let giphyApi = `https://api.giphy.com/v1/gifs/search?api_key=${APIKEY}&limit=6&PG&q=${choosenPoke}-pokemon`;
 
       fetch(giphyApi)
         .then(function (response) {
@@ -252,7 +251,7 @@ function pokemon() {
             console.log(gifImg);
 
             gifImg.html(`<img src="${gif}" alt="Giphy">`);
-          };
+          }
         });
     });
 }
@@ -278,8 +277,8 @@ $("#returnBtn").on("click", function (event) {
   event.preventDefault();
   resultBox.classList.remove("activeResult");
 });
-
 $(".card").on("click", function (event) {
   event.preventDefault();
+
   resultBox.classList.add("activeResult");
 });
