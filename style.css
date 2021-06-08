@@ -11,7 +11,13 @@ header {
 }
 
 body {
-  height: 100%;
+    background-color: rgb(159, 188, 241);
+    height: 100mh;
+}
+
+.favHtml {
+  background-color: rgb(159, 188, 241);
+    height: 100vh;
 }
 
 #searchMenu {
@@ -29,13 +35,13 @@ body {
 }
 
 #pokeball {
-  background: white;
+  background: rgb(159, 188, 241);
   border: none;
   padding: 20px;
 }
 
 .pokedex {
-  background: white;
+  background: rgb(159, 188, 241);
   border: none;
   padding: 10px;
 }
@@ -138,17 +144,6 @@ body {
   padding: 5%;
   height: 250px;
   width: 300px;
-}
-
-.favHtml {
-  background-color: rgb(159, 188, 241);
-  height: 100vh;
-}
-
-#pokeball2{
-  background-color: rgb(159, 188, 241);
-  border: none;
-  padding: 20px;
 }
 
 #stuff {
