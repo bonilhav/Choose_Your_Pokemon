@@ -3,17 +3,22 @@
 let favorites = JSON.parse(localStorage.getItem("favoritePoke"));
 let divEl = $("#stuff");
 
+$(".homeBtn").on("click", function (event) {
+  event.preventDefault();
+  pokemonHomePage();
+});
+
 if (localStorage.getItem("favoritePoke")) {
   favoriteList = JSON.parse(localStorage.getItem("favoritePoke"));
 }
 
 function displayFavorites() {
   if (favorites > [0]) {
-    for (i = 0; i < 6; i++) {
+    for (var i = 0; i < favorites.length; i++) {
       var caught = $(".caughtCards")
 
-      caught.html(`
-      <div id="pokeCard">
+      caught.append(`
+      <div id="pokeCard2">
       <div>
       <div class="cardImg">
       <img src="${favorites[i][1]}" alt="Pokemon">
@@ -39,27 +44,10 @@ function displayFavorites() {
   };
 }
 
-console.log(favorites)
+/* favorites.forEach(displayFavorites); */
 
+console.log(favorites);
 
-/* function displayFavorites() {
-  if (favorites > [0]) {
-    for (i = 0; i < favorites.length; i++) {
-      var pTag = document.createElement("p")
-      pTag.textContent = favorites[i];
-
-      divEl.append(pTag)
-    }
-
-  } else {
-    var pTag = document.createElement("p")
-    pTag.textContent = "catch some pokemon"
-
-    divEl.append(pTag)
-  }
-
-
-} */
 function favoriteListLength() {
   if (favorites > [5]) {
     favorites.splice(6);
@@ -69,13 +57,7 @@ function favoriteListLength() {
 favoriteListLength()
 displayFavorites()
 
-
 function pokemonHomePage() {
   console.log("clicked")
   location.replace("./index.html")
 }
-
-$(".homeBtn").on("click", function (event) {
-  event.preventDefault();
-  pokemonHomePage();
-});

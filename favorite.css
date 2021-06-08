@@ -18,9 +18,8 @@
     display: flex;
 }
 
-.pokeCard {
-    display: inline-block;
-    width: 300px;
-    margin: 90px 0 0 150px;
+#pokeCard2 {
+    display: flex;
+    margin: 0 20px;
     border: solid 20px yellow;
-  }
+}
