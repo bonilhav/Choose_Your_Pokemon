@@ -1,6 +1,6 @@
 // Set favorite pokemon to local storage.
-/* let favoriteList = []; */
 let favorites = JSON.parse(localStorage.getItem("favoritePoke"));
+
 let divEl = $("#stuff");
 
 $(".homeBtn").on("click", function (event) {
@@ -14,9 +14,9 @@ if (localStorage.getItem("favoritePoke")) {
 
 function displayFavorites() {
   if (favorites > [0]) {
-    for (var i = 0; i < favorites.length; i++) {
+    for (var i = favorites.length -1; i >= 0 ; i--) {
       var caught = $(".caughtCards")
-
+      
       caught.append(`
       <div id="pokeCard2">
       <div>
@@ -36,6 +36,7 @@ function displayFavorites() {
       </div>
       </div>
       `)};
+      
   } else {
     var pTag = document.createElement("p")
     pTag.textContent = "catch some pokemon"
@@ -44,20 +45,17 @@ function displayFavorites() {
   };
 }
 
-/* favorites.forEach(displayFavorites); */
 
 console.log(favorites);
 
-function favoriteListLength() {
-  if (favorites > [5]) {
-    favorites.splice(6);
-  }
-}
 
-favoriteListLength()
+
+
 displayFavorites()
 
 function pokemonHomePage() {
   console.log("clicked")
   location.replace("./index.html")
 }
+
+
