@@ -3,7 +3,6 @@ let favoritePokemonButton = $("#favoriteBtn");
 let favoriteList = [];
 const input = document.querySelector("input");
 input.addEventListener("change", updateValue);
-
 function updateValue(e) {
   searchedPoke = e.target.value;
 }
@@ -226,9 +225,10 @@ function pokemon(lowerCasePoke) {
       let stats = $(".stats");
       let selectedPokemon = $("#selectedPokemon");
       let choosenPoke = data.name;
-      let capPokeName = choosenPoke.charAt(0).toUpperCase() + choosenPoke.slice(1);
+      let capPokeName =
+        choosenPoke.charAt(0).toUpperCase() + choosenPoke.slice(1);
 
-      selectedPokemon.html(`<p>${capPokeName}</p>`)
+      selectedPokemon.html(`<p>${capPokeName}</p>`);
       cardImg.html(`<img src="${data.sprites.front_default}" alt="Pokemon">`);
       stats.html(`
       <p id="stat1">HP: ${data.stats[0].base_stat}</p>
@@ -239,10 +239,8 @@ function pokemon(lowerCasePoke) {
       <p id="stat1">Speed: ${data.stats[5].base_stat}</p>
       `);
 
-      
       let APIKEY = "MFLGZadukzit9Mk8qCC8J3cbVDWy11db";
       let giphyApi = `https://api.giphy.com/v1/gifs/search?api_key=${APIKEY}&limit=6&rating=pg-13&q=${choosenPoke}-pokemon`;
-
 
       fetch(giphyApi)
         .then(function (response) {
@@ -260,19 +258,29 @@ function pokemon(lowerCasePoke) {
           }
         });
 
-        favoritePokemonButton.click(favoritePokemon)
-        let pokeStats = [data.name, data.sprites.front_default, data.stats[0].base_stat, data.stats[1].base_stat, data.stats[2].base_stat, data.stats[3].base_stat, data.stats[4].base_stat,
-          data.stats[5].base_stat]
+      favoritePokemonButton.click(favoritePokemon);
+      let pokeStats = [
+        data.name,
+        data.sprites.front_default,
+        data.stats[0].base_stat,
+        data.stats[1].base_stat,
+        data.stats[2].base_stat,
+        data.stats[3].base_stat,
+        data.stats[4].base_stat,
+        data.stats[5].base_stat,
+      ];
 
-        function favoritePokemon() {
-          console.log(pokeStats);
+      function favoritePokemon() {
+        console.log(pokeStats);
 
-          favoriteList.push(pokeStats)
-          window.localStorage.setItem("favoritePoke", JSON.stringify(favoriteList))
-        }
+        favoriteList.push(pokeStats);
+        window.localStorage.setItem(
+          "favoritePoke",
+          JSON.stringify(favoriteList)
+        );
+      }
     });
 }
-
 
 const resultBox = document.querySelector(".result_box");
 
@@ -298,7 +306,7 @@ $("#returnBtn").on("click", function (event) {
 
 $(".card").on("click", async function (event) {
   event.preventDefault();
-  let cardPoke = $(this).context.innerText
+  let cardPoke = $(this).context.innerText;
 
   await pokemon(cardPoke);
   resultBox.classList.add("activeResult");
