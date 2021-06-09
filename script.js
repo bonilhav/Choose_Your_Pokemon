@@ -1,6 +1,7 @@
 let searchedPoke = "";
 let favoritePokemonButton = $("#favoriteBtn");
 let favoriteList = [];
+const resultBox = document.querySelector(".result_box");
 const input = document.querySelector("input");
 input.addEventListener("change", updateValue);
 function updateValue(e) {
@@ -373,7 +374,7 @@ function pokemon(lowerCasePoke) {
   if (lowerCasePoke.slice(lowerCasePoke.length - 3) === "(♂)") {
     lowerCasePoke = lowerCasePoke.replace("(♂)", "(m)");
   }
-  console.log(lowerCasePoke);
+
   if (pokemonMain.includes(lowerCasePoke) === false) {
     resultBox.classList.remove("activeResult");
     let errorNotice = $("#notify");
@@ -488,10 +489,6 @@ function pokemon(lowerCasePoke) {
       }
     });
 }
-
-const resultBox = document.querySelector(".result_box");
-
-function randomPoke() {}
 
 $(".searchBtn").on("click", async function (event) {
   event.preventDefault();
