@@ -416,6 +416,7 @@ function pokemon(lowerCasePoke) {
       let cardImg = $(".cardImg");
       let stats = $(".stats");
       let selectedPokemon = $("#selectedPokemon");
+      let cardName = $('.cardName')
       let choosenPoke = data.name;
       if (choosenPoke.match(/farfetchd/gi)) {
         choosenPoke = choosenPoke.replace(/farfetchd/gi, "farfetch'd");
@@ -433,6 +434,7 @@ function pokemon(lowerCasePoke) {
         choosenPoke.charAt(0).toUpperCase() + choosenPoke.slice(1);
 
       selectedPokemon.html(`<p>${capPokeName}</p>`);
+      cardName.html(`<p>${capPokeName}</p>`);
       cardImg.html(`<img src="${data.sprites.front_default}" alt="Pokemon">`);
       stats.html(`
       <p id="stat1">HP: ${data.stats[0].base_stat}</p>

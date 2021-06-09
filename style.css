@@ -127,6 +127,13 @@ body {
   border: solid 20px yellow;
 }
 
+.cardName {
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  background-color: rgb(255, 255, 169);
+}
+
 .cardImg{
   background-color: rgb(255, 255, 169);
   border: none;
