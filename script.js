@@ -35,10 +35,10 @@ let pokemonMain = [
   "Raichu",
   "Sandshrew",
   "Sandslash",
-  "Nidoran",
+  "Nidoran(F)",
   "Nidorina",
   "Nidoqueen",
-  "Nidoran",
+  "Nidoran(M)",
   "Nidorino",
   "Nidoking",
   "Clefairy",
@@ -190,10 +190,10 @@ $(function () {
     "Raichu",
     "Sandshrew",
     "Sandslash",
-    "Nidoran",
+    "Nidoran(F)",
     "Nidorina",
     "Nidoqueen",
-    "Nidoran",
+    "Nidoran(M)",
     "Nidorino",
     "Nidoking",
     "Clefairy",
@@ -367,6 +367,13 @@ $(document).ready(function () {
 });
 
 function pokemon(lowerCasePoke) {
+  if (lowerCasePoke.slice(lowerCasePoke.length - 3) === "(♀)") {
+    lowerCasePoke = lowerCasePoke.replace("(♀)", "(f)");
+  }
+  if (lowerCasePoke.slice(lowerCasePoke.length - 3) === "(♂)") {
+    lowerCasePoke = lowerCasePoke.replace("(♂)", "(m)");
+  }
+  console.log(lowerCasePoke);
   if (pokemonMain.includes(lowerCasePoke) === false) {
     resultBox.classList.remove("activeResult");
     let errorNotice = $("#notify");
@@ -380,7 +387,23 @@ function pokemon(lowerCasePoke) {
     });
     return;
   }
+
+  if (lowerCasePoke.match(/Farfetch'd/gi)) {
+    lowerCasePoke = lowerCasePoke.replace(/Farfetch'd/gi, "farfetchd");
+  }
+  if (lowerCasePoke.match(/Mr. Mime/gi)) {
+    lowerCasePoke = lowerCasePoke.replace(/Mr. Mime/gi, "mr-mime");
+  }
+
   lowerCasePoke = lowerCasePoke.toLowerCase();
+
+  if (lowerCasePoke.slice(lowerCasePoke.length - 3) === "(f)") {
+    lowerCasePoke = lowerCasePoke.replace("(f)", "-f");
+  }
+  if (lowerCasePoke.slice(lowerCasePoke.length - 3) === "(m)") {
+    lowerCasePoke = lowerCasePoke.replace("(m)", "-m");
+  }
+
   let pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${lowerCasePoke}`;
 
   fetch(pokemonUrl)
@@ -394,6 +417,18 @@ function pokemon(lowerCasePoke) {
       let stats = $(".stats");
       let selectedPokemon = $("#selectedPokemon");
       let choosenPoke = data.name;
+      if (choosenPoke.match(/farfetchd/gi)) {
+        choosenPoke = choosenPoke.replace(/farfetchd/gi, "farfetch'd");
+      }
+      if (choosenPoke.match(/mr-mime/gi)) {
+        choosenPoke = choosenPoke.replace(/mr-mime/gi, "Mr. Mime");
+      }
+      if (choosenPoke.slice(choosenPoke.length - 2) === "-f") {
+        choosenPoke = choosenPoke.replace("-f", "(" + "&#9792;" + ")");
+      }
+      if (choosenPoke.slice(choosenPoke.length - 2) === "-m") {
+        choosenPoke = choosenPoke.replace("-m", "(" + "&#9794;" + ")");
+      }
       let capPokeName =
         choosenPoke.charAt(0).toUpperCase() + choosenPoke.slice(1);
 
