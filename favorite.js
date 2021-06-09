@@ -20,11 +20,9 @@ function displayFavorites() {
       caught.append(`
       <div id="pokeCard2">
       <div>
-      <div class="cardName">
-      <p>${favorites[i][1]}</p>
-      </div>
+      <p class="cardName">${favorites[i][0]}</p>
       <div class="cardImg">
-      <img src="${favorites[i][2]}" alt="Pokemon">
+      <img src="${favorites[i][1]}" alt="Pokemon">
       </div>
       <div class="cardContent">
       <div class="stats">
