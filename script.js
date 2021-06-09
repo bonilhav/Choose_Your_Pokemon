@@ -159,7 +159,7 @@ let pokemonMain = [
   "Mewtwo",
   "Mew",
 ];
-pokemonMain = pokemonMain.map(pokemon=> pokemon.toLowerCase())
+pokemonMain = pokemonMain.map((pokemon) => pokemon.toLowerCase());
 $(function () {
   let pokemon = [
     "Bulbasaur",
@@ -357,6 +357,9 @@ $(document).ready(function () {
         if (capPokeName.match(/Mr-mime/gi)) {
           capPokeName = capPokeName.replace(/Mr-Mime/gi, "Mr. Mime");
         }
+        if (capPokeName.match(/Farfetchd/gi)) {
+          capPokeName = capPokeName.replace(/Farfetchd/gi, "Farfetch'd");
+        }
         let displayName = $(`.title-${i}`);
         displayName.html(`${capPokeName}`);
       });
@@ -371,10 +374,10 @@ function pokemon(lowerCasePoke) {
     <button class="delete"></button><strong>
     Please select one of the original 151 Pokemon.</strong>
     </div>`);
-    $('.delete').on('click', function() {
+    $(".delete").on("click", function () {
       let errorNotice = $("#notify");
-      errorNotice.html('');
-    }) 
+      errorNotice.html("");
+    });
     return;
   }
   lowerCasePoke = lowerCasePoke.toLowerCase();
@@ -439,11 +442,10 @@ function pokemon(lowerCasePoke) {
       function favoritePokemon() {
         console.log(pokeStats);
         if (favoriteList.length > 5) {
-          favoriteList.shift()
-          
+          favoriteList.shift();
         }
-        favoriteList.push(pokeStats)
-        
+        favoriteList.push(pokeStats);
+
         window.localStorage.setItem(
           "favoritePoke",
           JSON.stringify(favoriteList)
