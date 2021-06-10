@@ -1,4 +1,4 @@
-*{
+* {
   box-sizing: border-box;
 }
 
@@ -79,7 +79,7 @@ body {
   border-radius: 8px;
 }
 
-.result_box.activeResult{
+.result_box.activeResult {
   z-index: 5;
   visibility: visible;
   opacity: 1;
@@ -108,7 +108,7 @@ body {
   border: none;
   background-color: rgb(159, 188, 241);
   display: inline-block;
-  color:rgb(243, 36, 36);
+  color: rgb(243, 36, 36);
 }
 
 #returnBtn {
@@ -121,7 +121,6 @@ body {
 
 #pokeCard {
   display: inline-block;
-  
   width: 300px;
   margin: 10px;
   border: solid 20px yellow;
@@ -134,18 +133,18 @@ body {
   background-color: rgb(255, 255, 169);
 }
 
-.cardImg{
+.cardImg {
   background-color: rgb(255, 255, 169);
   border: none;
 }
 
-.stats{
+.stats {
   padding: 10px;
   font-size: 20px;
   font-weight: 600;
   background-color: rgb(255, 255, 169);
 }
-.cardName{
+.cardName {
   padding: 10px;
   font-size: 20px;
   font-weight: 600;
@@ -160,7 +159,7 @@ body {
   display: flex;
 }
 
-.giph img{
+.giph img {
   padding: 5%;
   height: 250px;
   width: 300px;
@@ -174,7 +173,7 @@ body {
   background-color: rgb(159, 188, 241);
 }
 
-.caughtCards{
+.caughtCards {
   display: flex;
 }
 
@@ -185,19 +184,47 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-  .result_box {flex-direction: column;}
-  #selectedPokemon { font-size: 80px;}
-  #pokeCard { margin: 4px 0 0 0}
-  .caughtCards {flex-wrap: wrap;}
-  .giphys {width: 100%;}
-  .giph img {margin: 2px; padding: 0; height: 75px;}
+  .result_box {
+    flex-direction: column;
+  }
+  #selectedPokemon {
+    font-size: 80px;
+  }
+  #pokeCard {
+    margin: 4px 0 0 0;
+  }
+  .caughtCards {
+    flex-wrap: wrap;
+  }
+  .giphys {
+    width: 100%;
+  }
+  .giph img {
+    margin: 2px;
+    padding: 0;
+    height: 75px;
+  }
 }
 
 @media screen and (max-width: 576px) {
-  .result_box {flex-direction: column;}
-  #selectedPokemon { font-size: 40px;}
-  #pokeCard { margin: 4px 0 0 0}
-  .caughtCards {flex-wrap: wrap;}
-  .giphys {width: 100%;}
-  .giph img {margin: 2px; padding: 0; height: 75px;}
+  .result_box {
+    flex-direction: column;
+  }
+  #selectedPokemon {
+    font-size: 40px;
+  }
+  #pokeCard {
+    margin: 4px 0 0 0;
+  }
+  .caughtCards {
+    flex-wrap: wrap;
+  }
+  .giphys {
+    width: 100%;
+  }
+  .giph img {
+    margin: 2px;
+    padding: 0;
+    height: 75px;
+  }
 }
