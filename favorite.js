@@ -14,9 +14,10 @@ if (localStorage.getItem("favoritePoke")) {
 
 function displayFavorites() {
   if (favorites > [0]) {
-    for (var i = favorites.length -1; i >= 0 ; i--) {
-      var caught = $(".caughtCards")
-      
+    for (var i = favorites.length - 1; i >= 0; i--) {
+      var caught = $(".caughtCards");
+      favorites[i][0] =
+        favorites[i][0].charAt(0).toUpperCase() + favorites[i][0].slice(1);
       caught.append(`
       <div id="pokeCard2">
       <div>
@@ -36,27 +37,21 @@ function displayFavorites() {
       </div>
       </div>
       </div>
-      `)};
-      
+      `);
+    }
   } else {
-    var pTag = document.createElement("p")
-    pTag.textContent = "catch some pokemon"
+    var pTag = document.createElement("p");
+    pTag.textContent = "catch some pokemon";
 
-    divEl.append(pTag)
-  };
+    divEl.append(pTag);
+  }
 }
-
 
 console.log(favorites);
 
-
-
-
-displayFavorites()
+displayFavorites();
 
 function pokemonHomePage() {
-  console.log("clicked")
-  location.replace("./index.html")
+  console.log("clicked");
+  location.replace("./index.html");
 }
-
-
